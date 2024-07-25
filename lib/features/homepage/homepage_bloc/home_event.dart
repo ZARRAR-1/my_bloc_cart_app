@@ -4,16 +4,16 @@ part of 'home_bloc.dart';
 @immutable
 abstract class HomeEvent {}
 
-class HomeInitialEvent extends HomeEvent {}
+class HomeInitialEvent extends HomeEvent {} //Triggered inside initState when the page is first loaded
 
 class HomeProductWishlistButtonClickedEvent extends HomeEvent {
-  final ProductModel wishedProduct;
+  final ProductModel wishedProduct; //product which is wishlisted
 
   HomeProductWishlistButtonClickedEvent({required this.wishedProduct});
 }
 
 class HomeProductCartButtonClickedEvent extends HomeEvent {
-  final ProductModel clickedProduct;
+  final ProductModel clickedProduct; //product which is carted
 
   HomeProductCartButtonClickedEvent({required this.clickedProduct});
 }
