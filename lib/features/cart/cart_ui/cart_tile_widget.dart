@@ -44,6 +44,7 @@ class CartTileWidget extends StatelessWidget {
                   IconButton(
                       onPressed: () {
                         cartBloc.add(RemoveFromCartEvent(product: product));
+                        // cartBloc.add(CartSuccessEvent);
                       },
                       icon: const Icon(Icons.delete)),
                 ],

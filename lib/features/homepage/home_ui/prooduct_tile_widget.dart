@@ -36,8 +36,8 @@ class ProoductTileWidget extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text("\$" + product.price.toString(),
-                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+              Text("Rs. ${product.price}",
+                  style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
               Row(
                 children: [
                   IconButton(
@@ -45,13 +45,13 @@ class ProoductTileWidget extends StatelessWidget {
                         homeBloc.add(HomeProductWishlistButtonClickedEvent(
                             wishedProduct: product));
                       },
-                      icon: Icon(Icons.favorite_border)),
+                      icon: const Icon(Icons.favorite_border)),
                   IconButton(
                       onPressed: () {
                         homeBloc.add(HomeProductCartButtonClickedEvent(
                             clickedProduct: product));
                       },
-                      icon: Icon(Icons.shopping_bag_outlined)),
+                      icon: const Icon(Icons.shopping_bag_outlined)),
                 ],
               )
             ],

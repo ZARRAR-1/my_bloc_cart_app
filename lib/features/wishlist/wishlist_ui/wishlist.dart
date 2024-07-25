@@ -33,15 +33,25 @@ class _WishlistState extends State<Wishlist> {
             case (WishlistSuccessState):
               {
                 final successState = state as WishlistSuccessState;
-                return ListView.builder(
-                  itemCount: successState.wishlistItems.length,
-                  itemBuilder: (context, index) {
-                    return WishlistTileWidget(
-                      item: successState.wishlistItems[index],
-                      wishlistBloc: wishlistBloc,
-                    );
-                  },
-                );
+                if (successState.wishlistItems.isEmpty) {
+                  return const Center(
+                    child: Text(
+                      'Your Wishlist is Empty dear !', //NOT SHOWING UP
+                      style: TextStyle(
+                          color: Colors.blueGrey, fontWeight: FontWeight.bold),
+                    ),
+                  );
+                } else {
+                  return ListView.builder(
+                    itemCount: successState.wishlistItems.length,
+                    itemBuilder: (context, index) {
+                      return WishlistTileWidget(
+                        item: successState.wishlistItems[index],
+                        wishlistBloc: wishlistBloc,
+                      );
+                    },
+                  );
+                }
               }
             case (WishlistLoadingState):
               {
@@ -61,7 +71,16 @@ class _WishlistState extends State<Wishlist> {
           return Container();
         },
         listenWhen: (previous, current) => current is WishlistActionState,
-        listener: (context, state) {},
+        listener: (BuildContext context, WishlistState state) {
+          if (state is RemoveFromWishlistActionState) {
+            ScaffoldMessenger.of(context).showSnackBar(
+              const SnackBar(
+                content: Text('Item Removed From Wishlist !'),
+                duration: Duration(seconds: 1),
+              ),
+            );
+          }
+        },
       ),
     );
   }

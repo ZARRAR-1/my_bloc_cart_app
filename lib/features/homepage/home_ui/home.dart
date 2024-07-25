@@ -45,13 +45,14 @@ class _HomeState extends State<Home> {
           ScaffoldMessenger.of(context).showSnackBar(
             const SnackBar(
               content: Text('Item Added To Cart !'),
+              duration: Duration(seconds: 1),
             ),
           );
-        }
-        else if (state is HomeProductItemWishedActionState) {
+        } else if (state is HomeProductItemWishedActionState) {
           ScaffoldMessenger.of(context).showSnackBar(
             const SnackBar(
               content: Text('Item Added To Wishlist !'),
+              duration: Duration(seconds: 1),
             ),
           );
         }

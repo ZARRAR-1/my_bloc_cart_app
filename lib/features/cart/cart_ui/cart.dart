@@ -16,7 +16,6 @@ class _CartState extends State<Cart> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     cartBloc.add(CartInitialEvent());
   }
@@ -34,19 +33,32 @@ class _CartState extends State<Cart> {
           switch (state.runtimeType) {
             case (CartSuccessState):
               {
+                print('CartSuccessState');
+
                 final successState = state as CartSuccessState;
-                return ListView.builder(
-                  itemCount: successState.cartItems.length,
-                  itemBuilder: (context, index) {
-                    return CartTileWidget(
-                      product: successState.cartItems[index],
-                      cartBloc: cartBloc,
-                    );
-                  },
-                );
+                // print(successState.cartItems.length);
+                if (successState.cartItems.isEmpty) {
+                  print('Your Cart is Empty dear !');
+                  return const Center(
+                    child: Text(
+                      'Your Cart is Empty dear !', //NOT SHOWING UP
+                      style: TextStyle(color: Colors.blueGrey, fontWeight: FontWeight.bold),
+                    ),
+                  );
+                } else {
+                  return ListView.builder(
+                      itemCount: successState.cartItems.length,
+                      itemBuilder: (context, index) {
+                        return CartTileWidget(
+                          product: successState.cartItems[index],
+                          cartBloc: cartBloc,
+                        );
+                      });
+                }
               }
             case (CartLoadingState):
               {
+                print('Inside Cart Loading State');
                 return const Scaffold(
                   body: Center(
                     child: CircularProgressIndicator(
@@ -63,7 +75,16 @@ class _CartState extends State<Cart> {
           return Container();
         },
         listenWhen: (previous, current) => current is CartActionState,
-        listener: (context, state) {},
+        listener: (BuildContext context, CartState state) {
+          if (state is RemoveFromCartActionState) {
+            ScaffoldMessenger.of(context).showSnackBar(
+              const SnackBar(
+                content: Text('Item Removed From Cart !'),
+                duration: Duration(seconds: 1),
+              ),
+            );
+          }
+        },
       ),
     );
   }

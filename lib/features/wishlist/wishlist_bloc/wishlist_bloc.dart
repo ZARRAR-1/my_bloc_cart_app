@@ -14,6 +14,7 @@ class WishlistBloc extends Bloc<WishlistEvent, WishlistState> {
   WishlistBloc() : super(WishlistInitialState()) {
     on<WishlistInitialEvent>(wishlistInitialEvent);
     on<RemoveFromWishlistEvent>(wishlistRemoveEvent);
+    // on<RemoveFromWishlistState> (removeFromWishlistState);
   }
 
   FutureOr<void> wishlistInitialEvent(
@@ -30,7 +31,13 @@ class WishlistBloc extends Bloc<WishlistEvent, WishlistState> {
   FutureOr<void> wishlistRemoveEvent(event, Emitter<WishlistState> emit) {
     wishList.remove(event.item);
     emit(
+      RemoveFromWishlistActionState(),
+    );
+    emit(
       WishlistSuccessState(wishlistItems: wishList),
     );
   }
+
+// FutureOr<void> removeFromWishlistState(RemoveFromWishlistState event, Emitter<WishlistState> emit) {
+// }
 }
