@@ -37,7 +37,7 @@ class WishlistTileWidget extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text("\$${item.price}",
+              Text("Rs. ${item.price}",
                   style: const TextStyle(
                       fontSize: 18, fontWeight: FontWeight.bold)),
               Row(

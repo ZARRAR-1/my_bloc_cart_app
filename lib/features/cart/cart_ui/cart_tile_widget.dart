@@ -37,7 +37,7 @@ class CartTileWidget extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text("\$${product.price}",
+              Text("Rs. ${product.price}",
                   style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
               Row(
                 children: [

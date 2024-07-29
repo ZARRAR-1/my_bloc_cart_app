@@ -36,7 +36,7 @@ class _WishlistState extends State<Wishlist> {
                 if (successState.wishlistItems.isEmpty) {
                   return const Center(
                     child: Text(
-                      'Your Wishlist is Empty dear !', //NOT SHOWING UP
+                      'Your Wishlist is Empty Dear !', //NOT SHOWING UP
                       style: TextStyle(
                           color: Colors.blueGrey, fontWeight: FontWeight.bold),
                     ),

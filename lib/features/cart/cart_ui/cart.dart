@@ -38,11 +38,12 @@ class _CartState extends State<Cart> {
                 final successState = state as CartSuccessState;
                 // print(successState.cartItems.length);
                 if (successState.cartItems.isEmpty) {
-                  print('Your Cart is Empty dear !');
+                  // print('Your Cart is Empty Dear !');
                   return const Center(
                     child: Text(
-                      'Your Cart is Empty dear !', //NOT SHOWING UP
-                      style: TextStyle(color: Colors.blueGrey, fontWeight: FontWeight.bold),
+                      'Your Cart is Empty Dear !',
+                      style: TextStyle(
+                          color: Colors.blueGrey, fontWeight: FontWeight.bold),
                     ),
                   );
                 } else {
@@ -86,6 +87,23 @@ class _CartState extends State<Cart> {
           }
         },
       ),
+      floatingActionButton: Container(
+        width: 80,
+        height: 40,
+
+        child: FloatingActionButton(
+          backgroundColor: Colors.blueGrey[300],
+          foregroundColor: Colors.white,
+          onPressed: () {},
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(100),
+          ),
+          child: const Text(
+            'Checkout',
+          ),
+        ),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );
   }
 }
