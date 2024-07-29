@@ -4,13 +4,15 @@ class ProductModel {
   final String description;
   final String price;
   final String imageUrl;
+  final bool wishlisted;
 
-  ProductModel({
+  ProductModel( {
     required this.id,
     required this.name,
     required this.description,
     required this.price,
     required this.imageUrl,
+    required this.wishlisted,
   });
 
   String get getName {

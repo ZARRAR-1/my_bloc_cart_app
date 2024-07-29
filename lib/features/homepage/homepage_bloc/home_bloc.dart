@@ -39,6 +39,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
                 description: e['description'],
                 imageUrl: e['imageUrl'],
                 price: e['price'],
+                wishlisted: false,
               ),
             )
             .toList()));
@@ -66,7 +67,9 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
   FutureOr<void> homeProductWishlistButtonClickedEvent(
       HomeProductWishlistButtonClickedEvent event, Emitter<HomeState> emit) {
     print("Wishlist button clicked !");
-    wishList.add(event.wishedProduct); //sending data to bloc via an Event
+    wishList.add(event.wishedProduct);
+
+    //sending data to bloc via an Event
     emit(HomeProductItemWishedActionState());
   }
 }

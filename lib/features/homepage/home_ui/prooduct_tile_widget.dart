@@ -37,13 +37,17 @@ class ProoductTileWidget extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text("Rs. ${product.price}",
-                  style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+                  style: const TextStyle(
+                      fontSize: 18, fontWeight: FontWeight.bold)),
               Row(
                 children: [
                   IconButton(
                       onPressed: () {
-                        homeBloc.add(HomeProductWishlistButtonClickedEvent(
-                            wishedProduct: product));
+                        homeBloc.add(
+                          HomeProductWishlistButtonClickedEvent(
+                              wishedProduct: product),
+                        );
+
                       },
                       icon: const Icon(Icons.favorite_border)),
                   IconButton(
