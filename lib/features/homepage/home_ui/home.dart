@@ -13,13 +13,13 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  final HomeBloc homeBloc = HomeBloc();
+
   @override
   void initState() {
     homeBloc.add(HomeInitialEvent()); //Triggered the Initial Event
     super.initState();
   }
-
-  final HomeBloc homeBloc = HomeBloc();
 
   @override
   Widget build(BuildContext context) {
@@ -59,10 +59,13 @@ class _HomeState extends State<Home> {
       },
       buildWhen: (previous, current) => current is! HomeActionState,
       builder: (context, state) {
+        ///This variable - "state", holds the current state object emitted by your HomeBloc and is of type HomeState - base class.
         switch (state.runtimeType) {
           case const (HomeLoadedSuccessState):
+            ///Downcasting the state object to HomeLoadedSuccessState:
             final successState = state as HomeLoadedSuccessState;
-            // HomeLoadedSuccessState success;
+            /// Now 'successState' is known to be of type HomeLoadedSuccessState
+            /// and you can safely access its specific properties:
             return Scaffold(
               appBar: AppBar(
                 actions: [

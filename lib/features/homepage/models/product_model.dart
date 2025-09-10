@@ -13,8 +13,9 @@ class ProductModel {
     required this.price,
     required this.imageUrl,
     required this.wishlisted,
-  });
+  }) ;
 
+  ///Getter:
   String get getName {
     return name;
   }

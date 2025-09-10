@@ -1,10 +1,12 @@
 part of 'home_bloc.dart';
-//Home Events that are triggered from the HomePage UI:
+
+///Home Events that are triggered from the HomePage UI:
 
 @immutable
 abstract class HomeEvent {}
 
-class HomeInitialEvent extends HomeEvent {} //Triggered inside initState when the page is first loaded
+class HomeInitialEvent
+    extends HomeEvent {} //Triggered inside initState when the page is first loaded
 
 class HomeProductWishlistButtonClickedEvent extends HomeEvent {
   final ProductModel wishedProduct; //product which is wishlisted

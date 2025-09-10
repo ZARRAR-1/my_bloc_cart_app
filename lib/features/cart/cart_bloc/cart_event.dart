@@ -1,5 +1,7 @@
 part of 'cart_bloc.dart';
 
+///Events that are triggered from the CartPage UI:
+
 @immutable
 abstract class CartEvent {}
 
@@ -11,11 +13,11 @@ class RemoveFromCartEvent extends CartEvent {
   RemoveFromCartEvent({required this.product});
 }
 
-class  CartSuccessEvent extends CartEvent{}
+// class  CartSuccessEvent extends CartEvent{}
 
 
 
-//TO-DO:
+//ToDo:
 //Add Scaffold message once you delete item from cart
 //Complete wishlist part.
 

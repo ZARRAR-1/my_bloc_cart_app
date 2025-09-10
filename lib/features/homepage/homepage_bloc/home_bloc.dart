@@ -1,5 +1,4 @@
 import 'dart:async';
-
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:sample_practise_bloc_app/data/cart_Items.dart';
@@ -11,9 +10,10 @@ part 'home_event.dart';
 
 part 'home_state.dart';
 
-//Core Business Logic For HomePage
+///Core Business Logic For HomePage:
 
 class HomeBloc extends Bloc<HomeEvent, HomeState> {
+  ///Constructor:
   HomeBloc() : super(HomeInitialState()) {
     on<HomeInitialEvent>(homeInitialEvent);
     on<HomeProductWishlistButtonNavigateEvent>(
@@ -69,7 +69,6 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     print("Wishlist button clicked !");
     wishList.add(event.wishedProduct);
 
-    //sending data to bloc via an Event
     emit(HomeProductItemWishedActionState());
   }
 }
