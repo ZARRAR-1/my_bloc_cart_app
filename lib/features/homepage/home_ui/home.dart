@@ -13,18 +13,19 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  final HomeBloc homeBloc = HomeBloc();
+  late final HomeBloc _homeBloc;
+  // final HomeBloc homeBloc = HomeBloc();
 
   @override
   void initState() {
-    homeBloc.add(HomeInitialEvent()); //Triggered the Initial Event
+    _homeBloc.add(HomeInitialEvent()); //Triggered the Initial Event
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<HomeBloc, HomeState>(
-      bloc: homeBloc,
+      bloc: _homeBloc,
       listenWhen: (previous, current) => current is HomeActionState,
       listener: (BuildContext context, HomeState state) {
         if (state is NavigateToCartPageActionState) {
@@ -71,7 +72,7 @@ class _HomeState extends State<Home> {
                 actions: [
                   IconButton(
                     onPressed: () {
-                      homeBloc.add(
+                      _homeBloc.add(
                         HomeProductWishlistButtonNavigateEvent(),
                       );
                     },
@@ -82,7 +83,7 @@ class _HomeState extends State<Home> {
                   ),
                   IconButton(
                     onPressed: () {
-                      homeBloc.add(
+                      _homeBloc.add(
                         HomeProductCartButtonNavigateEvent(),
                       );
                     },
@@ -103,7 +104,7 @@ class _HomeState extends State<Home> {
                 itemBuilder: (context, index) {
                   return ProoductTileWidget(
                     product: successState.products[index],
-                    homeBloc: homeBloc,
+                    homeBloc: _homeBloc,
                   );
                 },
               ),
