@@ -18,6 +18,7 @@ class _HomeState extends State<Home> {
 
   @override
   void initState() {
+    _homeBloc = context.read<HomeBloc>();
     _homeBloc.add(HomeInitialEvent()); //Triggered the Initial Event
     super.initState();
   }

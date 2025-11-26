@@ -17,6 +17,7 @@ class _WishlistState extends State<Wishlist> {
   @override
   void initState() {
     super.initState();
+    _wishlistBloc = context.read<WishlistBloc>();
     _wishlistBloc.add(WishlistInitialEvent());
   }
 
