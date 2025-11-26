@@ -1,3 +1,5 @@
+///According to Flutter design patterns book Model class perform
+///manipulation on the data whereas this class should be named: ProductInfo
 class ProductModel {
   final String id;
   final String name;
