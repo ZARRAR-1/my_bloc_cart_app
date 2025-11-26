@@ -3,11 +3,11 @@ import 'package:sample_practise_bloc_app/features/homepage/homepage_bloc/home_bl
 import 'package:sample_practise_bloc_app/features/homepage/models/product_model.dart';
 
 class ProoductTileWidget extends StatelessWidget {
-  final ProductModel product;
-  final HomeBloc homeBloc;
+  final ProductModel _product;
+  final HomeBloc _homeBloc;
 
   const ProoductTileWidget(
-      {super.key, required this.product, required this.homeBloc});
+      {super.key, required ProductModel product, required HomeBloc homeBloc}) : _homeBloc = homeBloc, _product = product;
 
   @override
   Widget build(BuildContext context) {
@@ -25,35 +25,35 @@ class ProoductTileWidget extends StatelessWidget {
             width: double.infinity,
             decoration: BoxDecoration(
                 image: DecorationImage(
-                    fit: BoxFit.cover, image: NetworkImage(product.imageUrl))),
+                    fit: BoxFit.cover, image: NetworkImage(_product.imageUrl))),
           ),
           const SizedBox(height: 20),
-          Text(product.name,
+          Text(_product.name,
               style:
                   const TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
-          Text(product.description),
+          Text(_product.description),
           const SizedBox(height: 20),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text("Rs. ${product.price}",
+              Text("Rs. ${_product.price}",
                   style: const TextStyle(
                       fontSize: 18, fontWeight: FontWeight.bold)),
               Row(
                 children: [
                   IconButton(
                       onPressed: () {
-                        homeBloc.add(
+                        _homeBloc.add(
                           HomeProductWishlistButtonClickedEvent(
-                              wishedProduct: product),
+                              wishedProduct: _product),
                         );
 
                       },
                       icon: const Icon(Icons.favorite_border)),
                   IconButton(
                       onPressed: () {
-                        homeBloc.add(HomeProductCartButtonClickedEvent(
-                            clickedProduct: product));
+                        _homeBloc.add(HomeProductCartButtonClickedEvent(
+                            clickedProduct: _product));
                       },
                       icon: const Icon(Icons.shopping_bag_outlined)),
                 ],
