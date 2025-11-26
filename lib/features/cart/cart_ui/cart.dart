@@ -12,12 +12,14 @@ class Cart extends StatefulWidget {
 }
 
 class _CartState extends State<Cart> {
-  final CartBloc cartBloc = CartBloc();
+  late final CartBloc _cartBloc;
+  // final CartBloc cartBloc = CartBloc();
 
   @override
   void initState() {
     super.initState();
-    cartBloc.add(CartInitialEvent());
+    _cartBloc = context.read<CartBloc>();
+    _cartBloc.add(CartInitialEvent());
   }
 
   @override
@@ -27,7 +29,7 @@ class _CartState extends State<Cart> {
         title: Text('My Cart'),
       ),
       body: BlocConsumer<CartBloc, CartState>(
-        bloc: cartBloc,
+        bloc: _cartBloc,
         buildWhen: (previous, current) => current is! CartActionState,
         builder: (context, state) {
           switch (state.runtimeType) {
@@ -52,7 +54,7 @@ class _CartState extends State<Cart> {
                       itemBuilder: (context, index) {
                         return CartTileWidget(
                           product: successState.cartItems[index],
-                          cartBloc: cartBloc,
+                          cartBloc: _cartBloc,
                         );
                       });
                 }
