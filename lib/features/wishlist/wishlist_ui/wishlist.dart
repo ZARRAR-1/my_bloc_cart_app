@@ -11,12 +11,13 @@ class Wishlist extends StatefulWidget {
 }
 
 class _WishlistState extends State<Wishlist> {
-  final WishlistBloc wishlistBloc = WishlistBloc();
+  late final WishlistBloc _wishlistBloc;
+  // final WishlistBloc wishlistBloc = WishlistBloc();
 
   @override
   void initState() {
     super.initState();
-    wishlistBloc.add(WishlistInitialEvent());
+    _wishlistBloc.add(WishlistInitialEvent());
   }
 
   @override
@@ -26,7 +27,7 @@ class _WishlistState extends State<Wishlist> {
         title: const Text('Wishlist'),
       ),
       body: BlocConsumer<WishlistBloc, WishlistState>(
-        bloc: wishlistBloc,
+        bloc: _wishlistBloc,
         buildWhen: (previous, current) => current is! WishlistActionState,
         builder: (context, state) {
           switch (state.runtimeType) {
@@ -47,7 +48,7 @@ class _WishlistState extends State<Wishlist> {
                     itemBuilder: (context, index) {
                       return WishlistTileWidget(
                         item: successState.wishlistItems[index],
-                        wishlistBloc: wishlistBloc,
+                        wishlistBloc: _wishlistBloc,
                       );
                     },
                   );
